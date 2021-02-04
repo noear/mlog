@@ -2,6 +2,10 @@
 
 一个强调元信息的日志框架
 
+#### 示例
+
+
+#### 接品
 ```java
 public interface Logger {
     String getName();
@@ -64,3 +68,5 @@ public interface Logger {
     void error(Metainfo metainfo, String format, Object... args);
 }
 ```
+
+

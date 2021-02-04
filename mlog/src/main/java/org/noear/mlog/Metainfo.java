@@ -17,12 +17,14 @@ public class Metainfo {
         return data.get(key);
     }
 
-    public void put(String key, String value) {
+    public Metainfo put(String key, String value) {
         data.put(key, value);
+        return this;
     }
 
-    public void remove(String key) {
+    public Metainfo remove(String key) {
         data.remove(key);
+        return this;
     }
 
     public Set<String> allKeys() {

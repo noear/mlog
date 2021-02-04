@@ -2,10 +2,31 @@
 
 一个强调元信息的日志框架
 
-#### 示例
+#### 1、示例
+```java
+public class LogDemo {
+    static Logger logger = LoggerFactory.get(LogDemo.class);
 
+    public static void main(String[] args) {
+        //传统风格
+        logger.info("{}:\n{}", "mlog", "hello world!");
 
-#### 接品
+        logger.info(Metainfo.m().put("order_id", "12").put("user_id", "1"),
+                "{}:\n{}", "mlog", "hello world!");
+    }
+}
+```
+
+打印效果：
+```yaml
+[warn] org.noear.mlog.ILoggerFactoryImpl load failed
+2021-02-04T02:51:46.287Z [INFO] demo.LogDemo:: mlog:
+  hello world!
+2021-02-04T02:51:46.299Z [INFO] [order_id:12][user_id:1] demo.LogDemo:: mlog:
+  hello world!
+```
+
+#### 2、接口
 ```java
 public interface Logger {
     String getName();

@@ -11,6 +11,10 @@ import java.util.Set;
  * @since 1.0
  */
 public class Metainfo {
+    public static Metainfo m(){
+        return new Metainfo();
+    }
+
     Map<String, String> data = new LinkedHashMap<>();
 
     public String get(String key) {

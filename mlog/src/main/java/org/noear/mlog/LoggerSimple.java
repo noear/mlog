@@ -189,15 +189,17 @@ public class LoggerSimple implements Logger {
         String text = null;
 
         if (metainfo == null) {
-            text = String.format("%s [%s] :: %s",
-                    sdf.format(new Date()),
+            text = String.format("%s [%s] %s:: %s",
+                    new Date().toInstant().toString(),
                     level.name(),
+                    getName(),
                     content);
         } else {
-            text = String.format("%s [%s] %s:: %s",
-                    sdf.format(new Date()),
+            text = String.format("%s [%s] %s %s:: %s",
+                    new Date().toInstant().toString(),
                     level.name(),
                     metainfo.toString(),
+                    getName(),
                     content);
         }
 

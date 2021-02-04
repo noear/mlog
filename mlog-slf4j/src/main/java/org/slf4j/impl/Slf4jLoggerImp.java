@@ -9,7 +9,7 @@ import org.slf4j.helpers.MessageFormatter;
 
 /**
  * @author noear
- * @since 1.2
+ * @since 1.0
  */
 public class Slf4jLoggerImp implements Logger {
     private String name;

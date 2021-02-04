@@ -6,7 +6,7 @@ import org.slf4j.spi.LoggerFactoryBinder;
 
 /**
  * @author noear
- * @since 1.2
+ * @since 1.0
  */
 public enum StaticLoggerBinder implements LoggerFactoryBinder {
     /**

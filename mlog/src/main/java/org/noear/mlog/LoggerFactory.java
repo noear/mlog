@@ -4,7 +4,7 @@ package org.noear.mlog;
  * 日志器工厂
  *
  * @author noear
- * @since 1.2
+ * @since 1.0
  */
 public class LoggerFactory {
     //

@@ -8,7 +8,7 @@ import java.util.Set;
  * 元信息
  *
  * @author noear
- * @since 1.2
+ * @since 1.0
  */
 public class Metainfo {
     Map<String, String> data = new LinkedHashMap<>();

@@ -9,7 +9,7 @@ import java.util.Date;
  * 日志器简化版
  *
  * @author noear
- * @since 1.2
+ * @since 1.0
  */
 public class LoggerSimple implements Logger {
     protected String name;

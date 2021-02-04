@@ -6,7 +6,7 @@ import org.slf4j.event.Level;
 
 /**
  * @author noear
- * @since 1.2
+ * @since 1.0
  */
 public enum Slf4jLoggerFactoryImp implements ILoggerFactory {
     /**

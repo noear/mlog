@@ -2,6 +2,8 @@ package org.noear.mlog.utils;
 
 /**
  * @author org.slf4j.helpers
+ * @author noear
+ * @since 1.0
  */
 public class LogTuple {
     public static LogTuple NULL = new LogTuple((String)null);

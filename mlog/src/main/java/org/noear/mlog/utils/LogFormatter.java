@@ -5,8 +5,9 @@ import java.util.Map;
 
 /**
  * @author org.slf4j.helpers
+ * @author noear
+ * @since 1.0
  */
-
 public final class LogFormatter {
     static final char DELIM_START = '{';
     static final char DELIM_STOP = '}';

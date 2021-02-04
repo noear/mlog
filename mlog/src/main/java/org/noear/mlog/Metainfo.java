@@ -39,7 +39,7 @@ public class Metainfo {
     public String toString() {
         StringBuilder buf = new StringBuilder();
         data.forEach((k, v) -> {
-            buf.append("[").append(k).append(":").append(v).append("]");
+            buf.append("[@").append(k).append(":").append(v).append("]");
         });
 
         return buf.toString();

@@ -2,7 +2,7 @@
 
 一个强调元信息的日志框架
 
-#### 1、示例
+#### 1、示例（自带LoggerSimple）
 ```java
 public class LogDemo {
     static Logger logger = LoggerFactory.get(LogDemo.class);

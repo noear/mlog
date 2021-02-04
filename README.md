@@ -1,8 +1,6 @@
 # mlog
 
-一个强调元信息的日志框架，设计目的是为了对接日志服务接口。
-
-如将日志存入MongoDB或ES或RDB，进而可以通过元信息进行快速查询日志。
+一个强调元信息的日志框架，专为对接分布式日志服务接口而设计。如将日志存入Mongo或ES或RDB，进而通过元信息进行快速查询。
 
 目前已做为Solon cloud的日志服务接口使用...
 
@@ -25,7 +23,7 @@ public class LogDemo {
 ```
 
 打印效果：
-```yaml
+```
 [warn] org.noear.mlog.ILoggerFactoryImpl load failed
 2021-02-04T02:51:46.287Z [INFO] demo.LogDemo:: mlog:
   hello world!

@@ -11,8 +11,11 @@ public class LogDemo {
         //传统风格
         logger.info("{}:\n{}", "mlog", "hello world!");
 
-        logger.info(Metainfo.m().put("order_id", "12").put("user_id", "1"),
-                "{}:\n{}", "mlog", "hello world!");
+        //元信息风格
+        logger.info(Metainfo.m().put("order_id", "12").put("user_id", "1"),"{}:\n{}", "mlog", "hello world!");
+        
+        //元信息定制风格
+        //logger.info(Tags.tag0("order_"+12).tag3("user_"+1),"{}:\n{}", "mlog", "hello world!");
     }
 }
 ```

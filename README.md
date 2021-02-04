@@ -14,21 +14,26 @@ public class LogDemo {
         logger.info("{}:\n{}", "mlog", "hello world!");
 
         //元信息风格
-        logger.info(Metainfo.m().put("order_id", "12").put("user_id", "1"),"{}:\n{}", "mlog", "hello world!");
-        
-        //元信息定制风格
-        //logger.info(Tags.tag0("order_"+12).tag3("user_"+1),"{}:\n{}", "mlog", "hello world!");
+        logger.info(Metainfo.m().put("order_id", "12").put("user_id", "1"),
+                "{}:\n{}", "mlog", "hello world!");
+
+        //标签元信息风格
+        logger.info(Tags.tag0("order_" + 12).tag3("user_" + 1),
+                "{}:\n{}", "mlog", "hello world!");
     }
 }
+
 ```
 
 打印效果：
 ```
 [warn] org.noear.mlog.ILoggerFactoryImpl load failed
-2021-02-04T02:51:46.287Z [INFO] demo.LogDemo:: mlog:
-  hello world!
-2021-02-04T02:51:46.299Z [INFO] [order_id:12][user_id:1] demo.LogDemo:: mlog:
-  hello world!
+2021-02-04T04:22:49.752Z [INFO] demo.LogDemo:: mlog:
+hello world!
+2021-02-04T04:22:49.796Z [INFO] [@order_id:12][@user_id:1] demo.LogDemo:: mlog:
+hello world!
+2021-02-04T04:22:49.798Z [INFO] [@tag0:order_12][@tag3:user_1] demo.LogDemo:: mlog:
+hello world!
 ```
 
 #### 2、接口

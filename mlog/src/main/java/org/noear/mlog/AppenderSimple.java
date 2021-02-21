@@ -6,7 +6,7 @@ import java.util.Date;
  * @author noear 2021/2/21 created
  */
 public class AppenderSimple implements Appender {
-    private Level level = LoggerFactory.getLevel();
+    protected Level level = LoggerFactory.getLevel();
 
     @Override
     public String getName() {

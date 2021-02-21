@@ -1,5 +1,7 @@
 package org.noear.mlog;
 
+import org.noear.mlog.utils.PrintUtil;
+
 import java.util.Date;
 
 /**
@@ -33,27 +35,43 @@ public class AppenderSimple implements Appender {
     }
 
     protected void appendDo(String name, Class<?> clz, Level level, Metainfo metainfo, Object content) {
-        StringBuilder buf = new StringBuilder();
 
-        buf.append(new Date().toInstant().toString()).append(" ")
-                .append("[").append(level.name()).append("]").append(" ");
+        StringBuilder buf = new StringBuilder();
+        buf.append(new Date().toInstant()).append(" ");
+        buf.append("[").append(level.name()).append("] ");
+        buf.append("[*").append(Thread.currentThread().getName()).append("]");
 
         if (metainfo != null) {
-            buf.append(metainfo.toString()).append(" ");
+            buf.append(metainfo.toString());
         }
 
         if (clz != null) {
-            buf.append(clz.getTypeName()).append("#").append(getName()).append(":: ");
+            buf.append(" ").append(clz.getTypeName()).append("#").append(getName());
         } else {
-            buf.append(name).append("#").append(getName()).append(":: ");
+            buf.append(" ").append(name).append("#").append(getName());
         }
 
-        buf.append(content);
+        buf.append(" ::\r\n");
 
-        if (level == Level.ERROR) {
-            System.err.println(buf.toString());
-        } else {
-            System.out.println(buf.toString());
+        switch (level) {
+            case ERROR: {
+                PrintUtil.red(buf.toString());
+                break;
+            }
+            case WARN:{
+                PrintUtil.yellow(buf.toString());
+                break;
+            }
+            case DEBUG: {
+                PrintUtil.blue(buf.toString());
+                break;
+            }
+            default: {
+                PrintUtil.black(buf.toString());
+                break;
+            }
         }
+
+        System.out.println(content);
     }
 }

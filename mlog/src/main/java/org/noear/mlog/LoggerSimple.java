@@ -2,9 +2,6 @@ package org.noear.mlog;
 
 import org.noear.mlog.utils.LogFormatter;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * 日志器简化版
  *
@@ -14,14 +11,17 @@ import java.util.Date;
 public class LoggerSimple implements Logger {
     protected String name;
     protected Class<?> clz;
+    protected Appender appender;
 
     public LoggerSimple(String name) {
         this.name = name;
+        this.appender = LoggerFactory.getFactory().getAppender();
     }
 
     public LoggerSimple(Class<?> clz) {
         this.name = clz.getName();
         this.clz = clz;
+        this.appender = LoggerFactory.getFactory().getAppender();
     }
 
 
@@ -29,12 +29,6 @@ public class LoggerSimple implements Logger {
     public String getName() {
         return this.name;
     }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
 
     @Override
     public void trace(Object content) {
@@ -57,9 +51,7 @@ public class LoggerSimple implements Logger {
     }
 
     private void traceDo(Metainfo metainfo, Object content, String format, Object[] args) {
-        if (this.isTraceEnabled()) {
-            this.appendDo(Level.TRACE, metainfo, content, format, args);
-        }
+        this.writeDo(Level.TRACE, metainfo, content, format, args);
     }
 
 
@@ -84,9 +76,7 @@ public class LoggerSimple implements Logger {
     }
 
     private void debugDo(Metainfo metainfo, Object content, String format, Object[] args) {
-        if (this.isDebugEnabled()) {
-            this.appendDo(Level.DEBUG, metainfo, content, format, args);
-        }
+        this.writeDo(Level.DEBUG, metainfo, content, format, args);
     }
 
 
@@ -111,9 +101,7 @@ public class LoggerSimple implements Logger {
     }
 
     private void infoDo(Metainfo metainfo, Object content, String format, Object[] args) {
-        if (this.isInfoEnabled()) {
-            this.appendDo(Level.INFO, metainfo, content, format, args);
-        }
+        this.writeDo(Level.INFO, metainfo, content, format, args);
     }
 
 
@@ -138,9 +126,7 @@ public class LoggerSimple implements Logger {
     }
 
     private void warnDo(Metainfo metainfo, Object content, String format, Object[] args) {
-        if (this.isWarnEnabled()) {
-            this.appendDo(Level.WARN, metainfo, content, format, args);
-        }
+        this.writeDo(Level.WARN, metainfo, content, format, args);
     }
 
 
@@ -165,13 +151,11 @@ public class LoggerSimple implements Logger {
     }
 
     private void errorDo(Metainfo metainfo, Object content, String format, Object[] args) {
-        if (this.isErrorEnabled()) {
-            this.appendDo(Level.ERROR, metainfo, content, format, args);
-        }
+        this.writeDo(Level.ERROR, metainfo, content, format, args);
     }
 
 
-    protected void appendDo(Level level, Metainfo metainfo, Object content, String format, Object[] args) {
+    protected void writeDo(Level level, Metainfo metainfo, Object content, String format, Object[] args) {
         if (format != null) {
             if (args != null && args.length > 0) {
                 content = LogFormatter.arrayFormat(format, args).getMessage();
@@ -180,29 +164,6 @@ public class LoggerSimple implements Logger {
             }
         }
 
-        write(level, metainfo, content);
-    }
-
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-    public void write(Level level, Metainfo metainfo, Object content) {
-        String text = null;
-
-        if (metainfo == null) {
-            text = String.format("%s [%s] %s:: %s",
-                    new Date().toInstant().toString(),
-                    level.name(),
-                    getName(),
-                    content);
-        } else {
-            text = String.format("%s [%s] %s %s:: %s",
-                    new Date().toInstant().toString(),
-                    level.name(),
-                    metainfo.toString(),
-                    getName(),
-                    content);
-        }
-
-        System.out.println(text);
+        appender.append(getName(), level, metainfo, content);
     }
 }

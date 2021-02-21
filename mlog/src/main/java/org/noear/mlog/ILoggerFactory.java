@@ -13,4 +13,8 @@ public interface ILoggerFactory {
     default Logger getLogger(Class<?> clz) {
         return new LoggerSimple(clz);
     }
+
+    default Appender getAppender() {
+        return new AppenderSimple();
+    }
 }

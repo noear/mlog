@@ -164,6 +164,6 @@ public class LoggerSimple implements Logger {
             }
         }
 
-        appender.append(getName(), level, metainfo, content);
+        appender.append(getName(), clz,level, metainfo, content);
     }
 }

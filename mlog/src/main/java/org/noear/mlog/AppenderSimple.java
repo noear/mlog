@@ -14,32 +14,36 @@ public class AppenderSimple implements Appender {
     }
 
     @Override
-    public void append(String name, Level level, Metainfo metainfo, Object content) {
+    public void append(String name, Class<?> clz, Level level, Metainfo metainfo, Object content) {
         if (LoggerFactory.getLevel().code > level.code) {
             return;
         }
 
-        appendDo(name, level, metainfo, content);
+        appendDo(name, clz, level, metainfo, content);
     }
 
-    protected void appendDo(String name, Level level, Metainfo metainfo, Object content) {
-        String text = null;
+    protected void appendDo(String name, Class<?> clz, Level level, Metainfo metainfo, Object content) {
+        StringBuilder buf = new StringBuilder();
 
-        if (metainfo == null) {
-            text = String.format("%s [%s] %s:: %s",
-                    new Date().toInstant().toString(),
-                    level.name(),
-                    name,
-                    content);
-        } else {
-            text = String.format("%s [%s] %s %s:: %s",
-                    new Date().toInstant().toString(),
-                    level.name(),
-                    metainfo.toString(),
-                    name,
-                    content);
+        buf.append(new Date().toInstant().toString()).append(" ")
+                .append("[").append(level.name()).append("]").append(" ");
+
+        if (metainfo != null) {
+            buf.append(metainfo.toString()).append(" ");
         }
 
-        System.out.println(text);
+        if (clz != null) {
+            buf.append(clz.getTypeName()).append(":: ");
+        } else {
+            buf.append(name).append(":: ");
+        }
+
+        buf.append(content);
+
+        if (level == Level.ERROR) {
+            System.err.println(buf.toString());
+        } else {
+            System.out.println(buf.toString());
+        }
     }
 }

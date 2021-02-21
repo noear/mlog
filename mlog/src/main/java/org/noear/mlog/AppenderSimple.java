@@ -8,6 +8,8 @@ import java.util.Date;
  * @author noear 2021/2/21 created
  */
 public class AppenderSimple implements Appender {
+    protected static Appender instance = new AppenderSimple();
+
     protected Level level = LoggerFactory.getLevel();
 
     @Override

@@ -15,6 +15,6 @@ public interface ILoggerFactory {
     }
 
     default Appender getAppender() {
-        return new AppenderSimple();
+        return AppenderSimple.instance;
     }
 }

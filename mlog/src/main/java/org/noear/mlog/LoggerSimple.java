@@ -11,17 +11,14 @@ import org.noear.mlog.utils.LogFormatter;
 public class LoggerSimple implements Logger {
     protected String name;
     protected Class<?> clz;
-    protected Appender appender;
 
     public LoggerSimple(String name) {
         this.name = name;
-        this.appender = LoggerFactory.getFactory().getAppender();
     }
 
     public LoggerSimple(Class<?> clz) {
         this.name = clz.getName();
         this.clz = clz;
-        this.appender = LoggerFactory.getFactory().getAppender();
     }
 
 
@@ -164,6 +161,6 @@ public class LoggerSimple implements Logger {
             }
         }
 
-        appender.append(getName(), clz,level, metainfo, content);
+        LoggerFactory.getFactory().getAppender().append(getName(), clz,level, metainfo, content);
     }
 }

@@ -10,7 +10,7 @@ public class LoggerFactory {
     //
     //日志等级
     //
-    private static volatile Level level = Level.TRACE;
+    private static volatile Level level = Level.INFO;
 
     public static void setLevel(Level level) {
         LoggerFactory.level = level;

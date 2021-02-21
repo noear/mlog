@@ -22,5 +22,9 @@ public class LogDemo {
         //标签元信息风格
         logger.info(Tags.tag0("order_" + 12).tag3("user_" + 1),
                 "{}:\n{}", "mlog", "hello world!");
+
+
+        //打不出来
+        logger.trace("{}:\n{}", "mlog", "hello world!");
     }
 }

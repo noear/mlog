@@ -43,9 +43,9 @@ public class AppenderSimple implements Appender {
         }
 
         if (clz != null) {
-            buf.append(clz.getTypeName()).append(":: ");
+            buf.append(clz.getTypeName()).append("#").append(getName()).append(":: ");
         } else {
-            buf.append(name).append(":: ");
+            buf.append(name).append("#").append(getName()).append(":: ");
         }
 
         buf.append(content);

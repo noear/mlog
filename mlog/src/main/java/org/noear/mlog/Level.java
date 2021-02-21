@@ -15,14 +15,35 @@ public enum Level {
 
     public final int code;
 
-    public static Level of(int code){
-        for(Level v : values()){
-            if(v.code == code){
+    public static Level of(int code, Level def) {
+        for (Level v : values()) {
+            if (v.code == code) {
                 return v;
             }
         }
 
-        return INFO;
+        return def;
+    }
+
+    public static Level of(String name, Level def) {
+        if (name == null || name.length() == 0) {
+            return def;
+        }
+
+        switch (name.toUpperCase()) {
+            case "TRACE":
+                return TRACE;
+            case "DEBUG":
+                return DEBUG;
+            case "INFO":
+                return INFO;
+            case "WARN":
+                return WARN;
+            case "ERROR":
+                return ERROR;
+            default:
+                return def;
+        }
     }
 
     Level(int code) {

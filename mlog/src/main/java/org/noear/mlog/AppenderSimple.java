@@ -51,7 +51,7 @@ public class AppenderSimple implements Appender {
             buf.append(" ").append(name).append("#").append(getName());
         }
 
-        buf.append(" ::\r\n");
+        buf.append(":\r\n");
 
         switch (level) {
             case ERROR: {

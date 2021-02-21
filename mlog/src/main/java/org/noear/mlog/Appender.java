@@ -12,5 +12,5 @@ public interface Appender {
     Level getLevel();
     void setLevel(Level level);
 
-    void append(String name, Class<?> clz, Level level, Metainfo metainfo, Object content);
+    void append(String loggerName, Class<?> clz, Level level, Metainfo metainfo, Object content);
 }

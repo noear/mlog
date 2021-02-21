@@ -26,15 +26,15 @@ public class AppenderSimple implements Appender {
     }
 
     @Override
-    public void append(String name, Class<?> clz, Level level, Metainfo metainfo, Object content) {
+    public void append(String loggerName, Class<?> clz, Level level, Metainfo metainfo, Object content) {
         if (this.level.code > level.code) {
             return;
         }
 
-        appendDo(name, clz, level, metainfo, content);
+        appendDo(loggerName, clz, level, metainfo, content);
     }
 
-    protected void appendDo(String name, Class<?> clz, Level level, Metainfo metainfo, Object content) {
+    protected void appendDo(String loggerName, Class<?> clz, Level level, Metainfo metainfo, Object content) {
 
         StringBuilder buf = new StringBuilder();
         buf.append(new Date().toInstant()).append(" ");
@@ -48,7 +48,7 @@ public class AppenderSimple implements Appender {
         if (clz != null) {
             buf.append(" ").append(clz.getTypeName()).append("#").append(getName());
         } else {
-            buf.append(" ").append(name).append("#").append(getName());
+            buf.append(" ").append(loggerName).append("#").append(getName());
         }
 
         buf.append(":\r\n");
@@ -58,7 +58,7 @@ public class AppenderSimple implements Appender {
                 PrintUtil.red(buf.toString());
                 break;
             }
-            case WARN:{
+            case WARN: {
                 PrintUtil.yellow(buf.toString());
                 break;
             }
@@ -72,6 +72,10 @@ public class AppenderSimple implements Appender {
             }
         }
 
+        appendContentDo(content);
+    }
+
+    protected void appendContentDo(Object content) {
         System.out.println(content);
     }
 }

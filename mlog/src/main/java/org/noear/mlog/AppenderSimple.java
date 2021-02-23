@@ -39,8 +39,8 @@ public class AppenderSimple implements Appender {
     protected void appendDo(String loggerName, Class<?> clz, Level level, Metainfo metainfo, Object content) {
 
         StringBuilder buf = new StringBuilder();
-        buf.append(new Date().toInstant()).append(" ");
         buf.append("[").append(level.name()).append("] ");
+        buf.append(new Date().toInstant()).append(" ");
         buf.append("[*").append(Thread.currentThread().getName()).append("]");
 
         if (metainfo != null) {

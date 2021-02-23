@@ -10,26 +10,14 @@ import java.util.Date;
 public class AppenderSimple implements Appender {
     protected static Appender instance = new AppenderSimple();
 
-    protected Level level = LoggerFactory.getLevel();
-
     @Override
     public String getName() {
         return "simple";
     }
 
     @Override
-    public Level getLevel() {
-        return level;
-    }
-
-    @Override
-    public void setLevel(Level level) {
-        this.level = level;
-    }
-
-    @Override
     public void append(String loggerName, Class<?> clz, Level level, Metainfo metainfo, Object content) {
-        if (this.level.code > level.code) {
+        if (LoggerFactory.getLevel().code > level.code) {
             return;
         }
 

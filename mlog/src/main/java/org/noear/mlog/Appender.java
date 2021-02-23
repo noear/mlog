@@ -9,8 +9,5 @@ package org.noear.mlog;
 public interface Appender {
     String getName();
 
-    Level getLevel();
-    void setLevel(Level level);
-
     void append(String loggerName, Class<?> clz, Level level, Metainfo metainfo, Object content);
 }

@@ -17,7 +17,7 @@ public class Slf4jLoggerImp implements Logger {
 
     public Slf4jLoggerImp(String name) {
         this.name = name;
-        this.real = LoggerFactory.get(name);
+        this.real = LoggerFactory.getLogger(name);
     }
 
     @Override

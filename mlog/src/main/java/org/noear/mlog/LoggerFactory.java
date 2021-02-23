@@ -36,11 +36,11 @@ public class LoggerFactory {
     //
     //获取
     //
-    public static Logger get(String name) {
+    public static Logger getLogger(String name) {
         return factory.getLogger(name);
     }
 
-    public static Logger get(Class<?> clz) {
+    public static Logger getLogger(Class<?> clz) {
         return factory.getLogger(clz);
     }
 

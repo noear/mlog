@@ -7,6 +7,14 @@ package org.noear.mlog;
  * @since 1.0
  */
 public interface Logger {
+    static Logger get(String name){
+        return LoggerFactory.getLogger(name);
+    }
+    static Logger get(Class<?> clz){
+        return LoggerFactory.getLogger(clz);
+    }
+
+
     String getName();
 
     void trace(Object content);

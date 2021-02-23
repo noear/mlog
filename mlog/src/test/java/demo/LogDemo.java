@@ -14,7 +14,7 @@ public class LogDemo {
     public static void main(String[] args) {
         LoggerFactory.setLevel(Level.TRACE);
 
-        Logger logger = LoggerFactory.get(LogDemo.class);
+        Logger logger = LoggerFactory.getLogger(LogDemo.class);
 
         //传统风格
         logger.trace("{}: {}", "mlog", "hello world!");

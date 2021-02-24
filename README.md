@@ -12,7 +12,7 @@
 <dependency>
     <groupId>org.noear</groupId>
     <artifactId>mlog</artifactId>
-    <version>1.0.2-m3</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 

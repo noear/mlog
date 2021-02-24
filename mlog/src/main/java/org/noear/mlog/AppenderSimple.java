@@ -2,6 +2,7 @@ package org.noear.mlog;
 
 import org.noear.mlog.utils.PrintUtil;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -28,7 +29,7 @@ public class AppenderSimple implements Appender {
 
         StringBuilder buf = new StringBuilder();
         buf.append("[").append(level.name()).append("] ");
-        buf.append(new Date().toInstant()).append(" ");
+        buf.append(LocalDateTime.now()).append(" ");
         buf.append("[*").append(Thread.currentThread().getName()).append("]");
 
         if (metainfo != null) {

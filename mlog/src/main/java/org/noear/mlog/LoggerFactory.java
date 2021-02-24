@@ -66,7 +66,7 @@ public class LoggerFactory {
             }
 
         } catch (Throwable ex) {
-            System.err.println("[warn] org.noear.mlog.ILoggerFactoryImpl load failed");
+            System.err.println("[WARN] org.noear.mlog.ILoggerFactoryImpl load failed");
         }
     }
 }

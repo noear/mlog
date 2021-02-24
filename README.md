@@ -39,7 +39,7 @@ public class LogDemo {
 
 打印效果：
 ```
-[warn] org.noear.mlog.ILoggerFactoryImpl load failed
+[WARN] org.noear.mlog.ILoggerFactoryImpl load failed
 [INFO] 2021-02-24T22:29:11.819 [*main] demo.LogDemo#simple:
 mlog: hello world!
 [INFO] 2021-02-24T22:29:11.820 [*main][@order_id:12][@user_id:1] demo.LogDemo#simple:

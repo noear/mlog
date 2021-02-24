@@ -21,8 +21,7 @@
         <mlog.ver>1.0.2</mlog.ver>
         <slf4j.ver>1.7.30</slf4j.ver>
     </properties>
-
-
+    
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>

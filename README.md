@@ -40,12 +40,12 @@ public class LogDemo {
 打印效果：
 ```
 [warn] org.noear.mlog.ILoggerFactoryImpl load failed
-2021-02-04T04:22:49.752Z [INFO] demo.LogDemo:: mlog:
-hello world!
-2021-02-04T04:22:49.796Z [INFO] [@order_id:12][@user_id:1] demo.LogDemo:: mlog:
-hello world!
-2021-02-04T04:22:49.798Z [INFO] [@tag0:order_12][@tag3:user_1] demo.LogDemo:: mlog:
-hello world!
+[INFO] 2021-02-24T22:29:11.819 [*main] demo.LogDemo#simple:
+mlog: hello world!
+[INFO] 2021-02-24T22:29:11.820 [*main][@order_id:12][@user_id:1] demo.LogDemo#simple:
+mlog: hello world!
+[INFO] 2021-02-24T22:29:11.822 [*main][@tag0:order_12][@tag3:user_1] demo.LogDemo#simple:
+mlog: hello world!
 ```
 
 #### 2、接口
